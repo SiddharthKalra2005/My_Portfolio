@@ -11,6 +11,8 @@ const PORT = 3000;
 // 3. Configure the templating engine
 app.set('view engine', 'ejs');
 
+app.use(express.urlencoded({ extended: true }));
+
 // 4. Set up a folder for static files (CSS, images)
 app.use(express.static('public'));
 
@@ -19,16 +21,56 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('Connected to MongoDB!'))
     .catch((err) => console.error('MongoDB connection error:', err));
 
-// 6. Create the home route
-app.get('/', async (req, res) => {
+// 1. The Home Route (Just renders the main page)
+app.get('/', (req, res) => {
+    res.render('index'); 
+});
+
+// 2. The Real Projects Route (Fetches DB data and renders the new page)
+app.get('/projects', async (req, res) => {
     try {
-        // Fetch all projects from MongoDB
         const projects = await Project.find({}); 
-        // Pass the fetched projects to the index.ejs template
-        res.render('index', { projects: projects }); 
+        res.render('projects', { projects: projects }); 
     } catch (err) {
         console.error('Error fetching projects:', err);
         res.status(500).send('Internal Server Error');
+    }
+});
+
+// 3. Resume Page
+app.get('/resume', (req, res) => {
+    res.render('resume'); 
+});
+
+// Show the admin form
+app.get('/admin', (req, res) => {
+    res.render('admin');
+});
+
+// Handle the form submission
+app.post('/admin/add', async (req, res) => {
+    try {
+        const { title, description, techStack, githubLink } = req.body;
+
+        // Convert the comma-separated string into an array of strings
+        const techArray = techStack.split(',').map(tech => tech.trim());
+
+        // Create a new project instance
+        const newProject = new Project({
+            title,
+            description,
+            techStack: techArray,
+            githubLink
+        });
+
+        // Save to MongoDB
+        await newProject.save();
+
+        // Redirect back to the home page to see the new card
+        res.redirect('/'); 
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error saving project');
     }
 });
 

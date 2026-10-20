@@ -4,123 +4,155 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Siddharth Kalra | Portfolio</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Using Plus Jakarta Sans (The exact modern sleek font family used by top developer portfolios) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --sans-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --mono-font: ui-monospace, SFMono-Regular, Consolas, "Courier New", monospace;
+        }
+
+        body {
+            font-family: var(--sans-font) !important;
+            background-color: #fcfcfc;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        p, h2, h3, h4, h5, h6, span, div {
+            font-family: var(--sans-font) !important;
+        }
+
+        /* 
+           THE SLEEK MODERN HEADER:
+           Instead of blocky bold, we use a clean 800 weight with balanced tracking.
+        */
+        h1.main-heading {
+            font-family: var(--sans-font) !important;
+            font-size: 3.5rem !important; 
+            font-weight: 800 !important; 
+            letter-spacing: -0.035em !important; 
+            color: #111 !important;
+            line-height: 1.15 !important;
+        }
+        
+        h2.section-title {
+            font-size: 1.75rem !important;
+            font-weight: 700 !important;
+            letter-spacing: -0.02em !important;
+            margin-bottom: 1.5rem; 
+        }
+
+        /* Strict Monospace Targeting */
+        .navbar-brand,
+        .nav-link,
+        .btn,
+        .badge,
+        .custom-bullet li,
+        .mono-text {
+            font-family: var(--mono-font) !important;
+            letter-spacing: 0 !important;
+        }
+
+        /* Layout Utilities */
+        .home-container { 
+            max-width: 1000px !important; 
+            margin: 0 auto; 
+        }
+        
+        .profile-img { width: 100%; max-width: 240px; border-radius: 8px; object-fit: cover; }
+        .contact-box { background-color: #f8f9fa; border: 1px solid #e9ecef; }
+        
+        /* Monospace Bullet Adjustments */
+        .custom-bullet li {
+            margin-bottom: 0.85rem; 
+            font-size: 0.9rem; 
+            color: #495057;
+        }
+        .custom-bullet li::before {
+            content: "· "; font-weight: bold; color: #111; margin-right: 6px;
+        }
+    </style>
 </head>
-<body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<body class="pb-5">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
         <div class="container">
-            <a class="navbar-brand" href="#">Siddharth Kalra</a>
+            <a class="navbar-brand fw-bold" href="/" style="font-size: 0.95rem;">Siddharth Kalra</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                <ul class="navbar-nav ms-auto" style="font-size: 0.9rem;">
+                    <li class="nav-item"><a class="nav-link active text-white" href="/">home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/projects">projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/resume">resume</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/SiddharthKalra2005" target="_blank" rel="noreferrer">github</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="bg-light py-5 text-center">
-        <div class="container my-5">
-            <h1 class="display-4 fw-bold">Hi, I'm Siddharth</h1>
-            <p class="lead mb-4">Undergraduate B.Tech student in Mathematics and Computing at Delhi Technological University.</p>
-            <a href="#projects" class="btn btn-primary btn-lg">View My Work</a>
-        </div>
-    </header>
-    <!-- Skills Section -->
-    <section id="skills" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5 fw-bold">Technical Skills</h2>
-            <div class="row g-4">
-                <!-- Skill Card 1 -->
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm border-0 bg-light">
-                        <div class="card-body text-center">
-                            <h5 class="card-title fw-bold mb-3">Languages</h5>
-                            <p class="card-text text-muted">C, C++, Python, JavaScript, SQL</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Skill Card 2 -->
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm border-0 bg-light">
-                        <div class="card-body text-center">
-                            <h5 class="card-title fw-bold mb-3">Web Technologies</h5>
-                            <p class="card-text text-muted">Node.js, Express.js, MongoDB, EJS, HTML/CSS</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Skill Card 3 -->
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm border-0 bg-light">
-                        <div class="card-body text-center">
-                            <h5 class="card-title fw-bold mb-3">ML & Data Science</h5>
-                            <p class="card-text text-muted">TensorFlow, Keras, PyTorch, OpenCV, scikit-learn</p>
-                        </div>
-                    </div>
-                </div>
+    <div class="container home-container px-3">
+        <section class="mt-4 mb-5 pb-4 border-bottom">
+            <h1 class="main-heading mb-3">Full-Stack Developer & ML Student</h1>
+            <p class="text-secondary mb-4" style="font-size: 1.1rem; max-width: 650px;">
+                B.Tech Mathematics and Computing @ DTU (2027) · Former SDE Intern @ WINK & MetaMinds
+            </p>
+            
+            <div class="d-flex align-items-center gap-2 mb-4">
+                <span class="badge bg-light text-dark border fw-normal px-3 py-2" style="font-size: 0.95rem;">
+                    <span class="text-danger me-2">●</span> Open to software engineering and ML internships
+                </span>
             </div>
-        </div>
-    </section>
+            
+            <div class="d-flex flex-wrap gap-3">
+                <a href="/projects" class="btn btn-dark rounded-1 px-4 py-2 fw-semibold" style="font-size: 0.95rem;">See projects</a>
+                <a href="mailto:siddharthkalra2005@gmail.com" class="btn btn-outline-dark rounded-1 px-4 py-2 fw-semibold" style="font-size: 0.95rem;">Get in touch</a>
+            </div>
+        </section>
 
-    <!-- Achievements Section -->
-    <section id="about" class="py-5 bg-dark text-white">
-        <div class="container">
-            <h2 class="text-center mb-5 fw-bold">Achievements & Extras</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <ul class="list-group list-group-flush fs-5">
-                        <li class="list-group-item bg-transparent text-white border-secondary py-3">
-                            🚀 Secured 98.26 percentile in JEE Main (AIR 20,175).
-                        </li>
-                        <li class="list-group-item bg-transparent text-white border-secondary py-3">
-                            💻 Solved 500+ DSA problems across competitive programming platforms.
-                        </li>
-                        <li class="list-group-item bg-transparent text-white border-secondary py-3">
-                            ♟️ Active competitive chess player (~1500 Rapid) and Zonal Badminton medalist.
-                        </li>
+        <section class="mb-5 pb-5 border-bottom">
+            <h2 class="section-title">About</h2>
+            <div class="row g-5 align-items-start">
+                <div class="col-lg-3 text-center text-lg-start">
+                    <img src="/profile.jpg" alt="Siddharth Kalra" class="profile-img shadow-sm border" onerror="this.src='https://via.placeholder.com/220x280?text=Your+Photo+Here'">
+                </div>
+                <div class="col-lg-9">
+                    <p class="text-dark mb-4" style="font-size: 1rem; line-height: 1.8; max-width: 800px;">
+                        I am an undergraduate combining mathematics, full-stack web development, and machine learning. During my internships at WINK and MetaMinds, I built secure authentication pipelines and developed production-ready frontend interfaces. 
+                        <br><br>
+                        Alongside web development, I actively work with computer vision and deep learning frameworks, including building a real-time OCR calculator from scratch using Convolutional Neural Networks.
+                    </p>
+                    
+                    <ul class="list-unstyled custom-bullet mt-4">
+                        <li>JEE Main AIR 20,175 (98.26%ile)</li>
+                        <li>Solved 500+ DSA problems</li>
+                        <li>Competitive Chess (~1500 Rapid)</li>
+                        <li>Zonal Badminton Medalist</li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- Projects Section -->
-    <section id="projects" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5 fw-bold">My Projects</h2>
-            <div class="row g-4">
-                <!-- EJS Loop Starts Here -->
-                <% projects.forEach(project => { %>
-                    <div class="col-md-4">
-                        <div class="card h-100 shadow-sm border-0 bg-light">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold mb-3"><%= project.title %></h5>
-                                <p class="card-text text-muted flex-grow-1"><%= project.description %></p>
-                                
-                                <!-- Loop through the tech stack array -->
-                                <div class="mb-4">
-                                    <% project.techStack.forEach(tech => { %>
-                                        <span class="badge bg-secondary me-1"><%= tech %></span>
-                                    <% }) %>
-                                </div>
-                                
-                                <a href="<%= project.githubLink %>" target="_blank" class="btn btn-dark mt-auto">View on GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                <% }) %>
-                <!-- EJS Loop Ends Here -->
+        </section>
+
+        <section class="mb-4">
+            <div class="contact-box p-4 rounded-3 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                <div>
+                    <h5 class="fw-bold mb-2">Looking for a developer or collaborator?</h5>
+                    <p class="text-muted mb-0 mono-text" style="font-size: 1.25rem;">Let's talk.</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="mailto:siddharthkalra2005@gmail.com" class="btn btn-dark rounded-1 px-4 py-2 fw-medium" style="font-size: 0.95rem;">Email me</a>
+                    <a href="https://www.linkedin.com/in/siddharth-kalra-188b842b3/" target="_blank" class="btn btn-outline-dark rounded-1 px-4 py-2 fw-medium" style="font-size: 0.95rem;">LinkedIn</a>
+                </div>
             </div>
-        </div>
-    </section>
-    <!-- Bootstrap JS bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
