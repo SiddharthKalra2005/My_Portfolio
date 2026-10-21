@@ -6,7 +6,6 @@
     <title>Siddharth Kalra | Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Using Plus Jakarta Sans (The exact modern sleek font family used by top developer portfolios) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -28,10 +27,6 @@
             font-family: var(--sans-font) !important;
         }
 
-        /* 
-           THE SLEEK MODERN HEADER:
-           Instead of blocky bold, we use a clean 800 weight with balanced tracking.
-        */
         h1.main-heading {
             font-family: var(--sans-font) !important;
             font-size: 3.5rem !important; 
@@ -48,7 +43,6 @@
             margin-bottom: 1.5rem; 
         }
 
-        /* Strict Monospace Targeting */
         .navbar-brand,
         .nav-link,
         .btn,
@@ -59,23 +53,46 @@
             letter-spacing: 0 !important;
         }
 
-        /* Layout Utilities */
         .home-container { 
             max-width: 1000px !important; 
             margin: 0 auto; 
         }
         
-        .profile-img { width: 100%; max-width: 240px; border-radius: 8px; object-fit: cover; }
+        .profile-img { 
+            width: 100%; 
+            max-width: 220px; 
+            aspect-ratio: 1 / 1; 
+            border-radius: 8px; 
+            object-fit: cover; 
+            object-position: center 15%; 
+        }
+        
         .contact-box { background-color: #f8f9fa; border: 1px solid #e9ecef; }
         
-        /* Monospace Bullet Adjustments */
+        /* FLAWLESS CSS-DRAWN BULLET ALIGNMENT */
+        .custom-bullet {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+            margin-top: 0 !important; /* Keeps list flush with top of image/paragraph */
+        }
         .custom-bullet li {
-            margin-bottom: 0.85rem; 
-            font-size: 0.9rem; 
+            display: flex;
+            align-items: center; /* Mathematically locks the dot to the vertical center */
+            margin-bottom: 0.75rem; 
+            font-size: 0.85rem; 
             color: #495057;
+            line-height: 1.6; 
         }
         .custom-bullet li::before {
-            content: "· "; font-weight: bold; color: #111; margin-right: 6px;
+            content: ""; /* Removes font character entirely */
+            display: block;
+            width: 6px; /* Draws a precise 6x6 pixel circle */
+            height: 6px;
+            background-color: #111;
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0; /* Prevents dot from resizing */
         }
     </style>
 </head>
@@ -98,6 +115,7 @@
     </nav>
 
     <div class="container home-container px-3">
+        <!-- Hero Section -->
         <section class="mt-4 mb-5 pb-4 border-bottom">
             <h1 class="main-heading mb-3">Full-Stack Developer & ML Student</h1>
             <p class="text-secondary mb-4" style="font-size: 1.1rem; max-width: 650px;">
@@ -116,20 +134,23 @@
             </div>
         </section>
 
+        <!-- About Section (3-Column Layout) -->
         <section class="mb-5 pb-5 border-bottom">
             <h2 class="section-title">About</h2>
-            <div class="row g-5 align-items-start">
-                <div class="col-lg-3 text-center text-lg-start">
-                    <img src="/profile.jpg" alt="Siddharth Kalra" class="profile-img shadow-sm border" onerror="this.src='https://via.placeholder.com/220x280?text=Your+Photo+Here'">
+            
+            <div class="row g-4 align-items-start mb-4">
+                <div class="col-lg-3 col-md-4 text-center text-md-start">
+                    <img src="/Siddharth%20Pic.jpeg" alt="Siddharth Kalra" class="profile-img shadow-sm border" onerror="this.src='https://via.placeholder.com/220x220?text=Photo+Error'">
                 </div>
-                <div class="col-lg-9">
-                    <p class="text-dark mb-4" style="font-size: 1rem; line-height: 1.8; max-width: 800px;">
+                
+                <div class="col-lg-5 col-md-8">
+                    <p class="text-dark mb-0 mt-0" style="font-size: 1rem; line-height: 1.8;">
                         I am an undergraduate combining mathematics, full-stack web development, and machine learning. During my internships at WINK and MetaMinds, I built secure authentication pipelines and developed production-ready frontend interfaces. 
-                        <br><br>
-                        Alongside web development, I actively work with computer vision and deep learning frameworks, including building a real-time OCR calculator from scratch using Convolutional Neural Networks.
                     </p>
-                    
-                    <ul class="list-unstyled custom-bullet mt-4">
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <ul class="custom-bullet">
                         <li>JEE Main AIR 20,175 (98.26%ile)</li>
                         <li>Solved 500+ DSA problems</li>
                         <li>Competitive Chess (~1500 Rapid)</li>
@@ -137,8 +158,17 @@
                     </ul>
                 </div>
             </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <p class="text-dark mb-0" style="font-size: 1rem; line-height: 1.8;">
+                        Alongside web development, I actively work with computer vision and deep learning frameworks, including building a real-time OCR calculator from scratch using Convolutional Neural Networks.
+                    </p>
+                </div>
+            </div>
         </section>
 
+        <!-- Contact Section -->
         <section class="mb-4">
             <div class="contact-box p-4 rounded-3 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
                 <div>
@@ -156,3 +186,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+```

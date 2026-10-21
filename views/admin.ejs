@@ -2,62 +2,97 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Projects</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .container-custom {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+        
+        /* Accents using ui-monospace */
+        .accent-font, .form-label, .btn {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+        
+        .form-label {
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+    </style>
 </head>
-<body class="bg-light">
-    <div class="container py-5" style="max-width: 600px;">
-        <h2 class="mb-4 fw-bold">Add New Project</h2>
-        <form action="/admin/add" method="POST" class="card p-4 shadow-sm border-0">
-            <div class="mb-3">
-                <label class="form-label fw-semibold">Title</label>
-                <input type="text" name="title" class="form-control" required>
+<body>
+    <div class="container-custom">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <h1 class="fw-bold m-0">Dashboard</h1>
+            <div>
+                <a href="/projects" class="btn btn-outline-dark btn-sm px-3 py-2 accent-font me-2">View Live Site</a>
+                <a href="/logout" class="btn btn-danger btn-sm px-3 py-2 accent-font">Logout</a>
             </div>
-            <div class="mb-3">
-                <label class="form-label fw-semibold">Description</label>
-                <textarea name="description" class="form-control" rows="3" required></textarea>
+        </div>
+        
+        <!-- Add Project Form -->
+        <div class="card shadow-sm border-0 rounded-3 mb-5">
+            <div class="card-body p-5">
+                <h5 class="card-title mb-4 accent-font text-uppercase text-muted" style="font-size: 0.9rem;">Add New Project</h5>
+                
+                <form action="/admin/add-project" method="POST">
+                    <div class="mb-4">
+                        <label for="title" class="form-label text-muted text-uppercase fw-bold">Project Title</label>
+                        <input type="text" class="form-control bg-light border-0 py-2" id="title" name="title" placeholder="e.g., Real-Time OCR Calculator" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="description" class="form-label text-muted text-uppercase fw-bold">Description</label>
+                        <textarea class="form-control bg-light border-0 py-2" id="description" name="description" rows="4" placeholder="Highlight key challenges and solutions..." required></textarea>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="techStack" class="form-label text-muted text-uppercase fw-bold">Tech Stack (Comma-separated)</label>
+                        <input type="text" class="form-control bg-light border-0 py-2" id="techStack" name="techStack" placeholder="e.g., Node.js, Express.js, PyTorch, OpenCV" required>
+                    </div>
+                    
+                    <div class="mb-5">
+                        <label for="githubLink" class="form-label text-muted text-uppercase fw-bold">Repository URL</label>
+                        <input type="url" class="form-control bg-light border-0 py-2" id="githubLink" name="githubLink" placeholder="https://github.com/..." required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-dark w-100 py-3 fw-bold">Save to Atlas</button>
+                </form>
             </div>
-            <div class="mb-3">
-                <label class="form-label fw-semibold">Tech Stack (comma separated)</label>
-                <input type="text" name="techStack" class="form-control" placeholder="e.g., Python, Flask, React" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-semibold">GitHub Repository Link</label>
-                <input type="url" name="githubLink" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-dark w-100 mt-2">Save Project</button>
-        </form>
-    </div>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
-    <div class="container py-5" style="max-width: 600px;">
-        <h2 class="mb-4 fw-bold">Add New Project</h2>
-        <form action="/admin/add" method="POST" class="card p-4 shadow-sm border-0">
-            <div class="mb-3">
-                <label class="form-label fw-semibold">Title</label>
-                <input type="text" name="title" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-semibold">Description</label>
-                <textarea name="description" class="form-control" rows="3" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-semibold">Tech Stack (comma separated)</label>
-                <input type="text" name="techStack" class="form-control" placeholder="e.g., Python, Flask, React" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-semibold">GitHub Repository Link</label>
-                <input type="url" name="githubLink" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-dark w-100 mt-2">Save Project</button>
-        </form>
+        </div>
+
+        <!-- Existing Projects List -->
+        <div>
+            <h5 class="mb-4 accent-font text-uppercase text-muted" style="font-size: 0.9rem;">Manage Existing Projects</h5>
+            
+            <% if (projects && projects.length > 0) { %>
+                <ul class="list-group shadow-sm border-0 rounded-3">
+                    <% projects.forEach(project => { %>
+                        <li class="list-group-item d-flex justify-content-between align-items-center p-4 bg-white border-bottom border-light mb-0">
+                            <div>
+                                <h6 class="fw-bold mb-1"><%= project.title %></h6>
+                                <small class="text-muted accent-font"><%= project.techStack.join(', ') %></small>
+                            </div>
+                            <!-- Delete Button Form -->
+                            <form action="/admin/delete/<%= project._id %>" method="POST" style="margin: 0;" onsubmit="return confirm('Are you sure you want to delete this project?');">
+                                <button type="submit" class="btn btn-sm btn-outline-danger accent-font px-3">Delete</button>
+                            </form>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p class="text-muted">No projects found in the database.</p>
+            <% } %>
+        </div>
     </div>
 </body>
 </html>
